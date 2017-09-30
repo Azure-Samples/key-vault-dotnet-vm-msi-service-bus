@@ -1,5 +1,5 @@
 **Azure Template for creating Key Vault with a secret in it and a VM with MSI enabled**  
-This Sample has one template which describes how to create a vault, create a service bus, put the service bus connection key as a secret in the vault and create a VM, which has MSI (Managed Service Identity) enabled. MSI makes authentication for developers much easier by abstracting away interaction with AAD (Azure Active Directory). The sample then shows how to call the Key Vault to retrieve the secret that you initially put in with authenicating using MSI. The code also shows how to put a message into the Service Bus queue that is created and get the message from the queue. The code is wrapped in a powerShell cmdlet.
+This sample has one template which describes how to create a vault, create a service bus, put the service bus connection key as a secret in the vault and create a VM, which has MSI (Managed Service Identity) enabled. MSI makes authentication for developers much easier by abstracting away interaction with AAD (Azure Active Directory). The sample then shows how to call the Key Vault to retrieve the secret that you initially put in with authenicating using MSI. The code also shows how to put a message into the Service Bus queue that is created and get the message from the queue. The code is wrapped in a powerShell cmdlet.
 
 **Step 1)**
 Create using ARM template a Service Bus and create Key Vault with a secret created in the vault, which is the connection key for the Service Bus. In addition, create a VM that is MSI enabled and has access to the key vault that was created. This is all done using one template. 
@@ -21,20 +21,13 @@ Then in PowerShell run.
 9. `Get-Secret` 
 
 **Step 3)**
-For Details on how the inner code in the PowerShell cmdlet works please refer to the following tutorial on using Key Vault from a VM that has MSI enabled. 
-
-<https://securitytools.visualstudio.com/DefaultCollection/_git/ASAL?path=%2FAzureServicesFromMSIVM.md&version=GBmaster&_a=contents>
+For further details on MSI works please refer to the following [tutorial](https://docs.microsoft.com/en-us/azure/app-service/app-service-managed-service-identity) and [MSI feature overview](https://docs.microsoft.com/en-us/azure/active-directory/msi-overview) on using a key vault from a VM that has MSI enabled. 
 
 In Visual Studio, go to **Tools->Nuget Package Manager->Package Manager Console**, and run these commands in the Package Manager Console. It is very important the necessary nuget packages be downloaded:  
 
 
-```Install-Package Microsoft.Azure.Services.AppAuthentication -Source "https://msazure.pkgs.visualstudio.com/_packaging/Official/nuget/v3/index.json"  -Prerelease```
+```Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.0.0-preview```
 
-
-OR
-
-
-```Install-Package Microsoft.Azure.Services.AppAuthentication -Source "https://securitytools.pkgs.visualstudio.com/_packaging/ASAL/nuget/v3/index.json"  -Prerelease```
 
 ```Install-Package Microsoft.Azure.KeyVault```
 
